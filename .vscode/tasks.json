@@ -1,0 +1,24 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "debug",
+            "type": "shell",
+            "command": "docker run -it -p 1234:1234 --rm -v \"$PWD\":/usr/src/app -w /usr/src/app ruby-remote:latest rdebug-ide --host 0.0.0.0 --port 1234 -- ${fileBasename}",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "custom",
+                "pattern": {
+                    "regexp": "Fast Debugger"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Fast Debugger",
+                    "endsPattern": "Fast Debugger"
+                }
+            }
+        }
+    ]
+}
